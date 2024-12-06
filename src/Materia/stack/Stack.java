@@ -1,9 +1,7 @@
 package Materia.stack;
 
-import java.util.EmptyStackException;
-
 import Materia.Models.Node;
-import java.awt.image.SinglePixelPackedSampleModel;
+import java.util.EmptyStackException;
 //esta clase es para una pila
 public class Stack {
     private Node top;  // nodo en la cima de nuestra pila

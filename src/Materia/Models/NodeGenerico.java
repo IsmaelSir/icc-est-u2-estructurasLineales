@@ -1,27 +1,28 @@
 package Materia.Models;
 
-public class Node {
-    private int value; //valor del nodo
-    private Node next; //referencia al siguiente nodo
+public class NodeGenerico <T> {
 
-    public Node (int value){
+    private T value;
+    private NodeGenerico<T> next;
+
+    public NodeGenerico (T value){
         this.value = value;
         this.next = null;
     }
 
-    public void setValue(int value){
+    public void setValue(T value){
         this.value = value;
     }
 
-    public int getValue(){
+    public T getValue(){
         return value;
     }
 
-    public void setNext(Node next){
+    public void setNext(NodeGenerico<T> next){
         this.next = next;
     }
 
-    public Node getNext(){
+    public NodeGenerico<T> getNext(){
         return next;
     }
 
@@ -29,4 +30,5 @@ public class Node {
     public String toString(){
         return "Nodo{value=" + value + '}'; 
     }
+
 }
