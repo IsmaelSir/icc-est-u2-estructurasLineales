@@ -1,11 +1,15 @@
 
+import Materia.queue.Queue;
+import Materia.queue.QueueGeneric;
 import Materia.stack.*;
 import models.Pantalla;
 
 public class App {
     public static void main(String[] args) throws Exception {
         //runStack();
-        runStackGeneric();
+        //runStackGeneric();
+        //runQueue();
+        runQueueGeneric();
     }
 
     public static void runStack(){
@@ -43,5 +47,34 @@ public class App {
         System.out.println("Pantallas= " + router.getSize());
         System.out.println("Estoy en: " + router.peek().getRuta());
         router.printstakc();
+    }
+
+    public static void runQueue(){
+        Queue cola = new Queue();
+        cola.enqueue(10);
+        cola.enqueue(20);
+        cola.enqueue(30);
+        cola.enqueue(40);
+
+        System.out.println(cola.peek());
+        System.out.println(cola.dequeue());
+        System.out.println(cola.dequeue());
+        System.out.println(cola.peek());
+        System.out.println("Tamanio de la cola: "+cola.getSizeQueue());
+        cola.printqueue();
+    }
+    public static void runQueueGeneric(){
+        QueueGeneric<Pantalla> colageneric = new QueueGeneric<>();
+
+        colageneric.enqueue(new Pantalla(1, "compu", "/Home"));
+        colageneric.enqueue(new Pantalla(1, "compu", "/Home/archivos"));
+        colageneric.enqueue(new Pantalla(1, "compu", "/Home/archivos/est"));
+
+        System.out.println(colageneric.peek());
+        //System.out.println(colageneric.dequeue());
+
+        System.out.println("Estoy en: "+ colageneric.peek().getRuta());
+        System.out.println("Tamanio= "+ colageneric.getSizeQueue());
+        colageneric.printqueue();
     }
 }
