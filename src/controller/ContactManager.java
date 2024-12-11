@@ -5,10 +5,10 @@ import models.Contact;
 import models.LinkendList;
 
 public class ContactManager {
-    private LinkedList<Contact<?, ?>>contacts;
+    private LinkendList<Contact<?, ?>> contacts;
 
-    public ContactManager(){
-        this.contacts = new LinkedList<>();
+    public ContactManager() {
+        this.contacts = new LinkendList<>();
     }
 
     public void addContact(Contact<?, ?> contact) {
@@ -20,33 +20,24 @@ public class ContactManager {
     }
 
 
-    public Contact<?, ?> findContactByName(String name){
-        NodeGenerico<Contact<?,?>> current = ContactManager.getHead(); // obtenemos para iterar la lista de
-        //nombre
-        while(current != null) {
-            if (
-                ((String) (current.getValue().getName())).equalsIgnoreCase(name)) {
-                    return current.getValue();
-            }
-            while (current != null) {
-                if(((String) current.getValue().getName()).equalsIgnoreCase(name)){
-                    return current.getValue();
-                }
-                current = current.getNext();
-                System.out.println(current);
-                System.out.println(current.getNext());
-            }
+    public Contact<?, ?> findContactByName(String name) {
+    NodeGenerico<Contact<?,?>> current = contacts.getHead(); // obtenemos el primer nodo
+    while(current != null) {
+        if (((String) (current.getValue().getName())).equalsIgnoreCase(name)) {
+            return current.getValue();
         }
-        return null; // no se encontro un contacto con ese nombre
+        current = current.getNext(); // avanza al siguiente nodo
     }
+    return null; // no se encontró un contacto con ese nombre
+}
 
-    public static void deleteContactByName(String name) {
+    public void deleteContactByName(String name) {
         NodeGenerico<Contact<?,?>> current = contacts.getHead();
         if(current == null)
         return;
 
         //Caso 1 si el contacto sea la Head o cabeza
-        if (((String) current.getValue().getName()).equalsIgnoreCase(name)) {
+        if (((String) current.getValue().getName()).equalsIgnoreCase(name)){
             contacts.setHead(contacts.getHead().getNext());
             contacts.setSize(contacts.getSize()-1);
         }
