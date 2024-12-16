@@ -1,17 +1,18 @@
 
+import Ejercicio_01_sing.SingValidator;
 import Materia.queue.Queue;
 import Materia.queue.QueueGeneric;
 import Materia.stack.*;
 import controller.MenuController;
 import models.Pantalla;
-
 public class App {
     public static void main(String[] args) throws Exception {
         //runStack();
         //runStackGeneric();
         //runQueue();
         //runQueueGeneric();
-        runContactManager();
+        //runContactManager();
+        runSingValidator();
     }
 
     public static void runStack(){
@@ -80,8 +81,25 @@ public class App {
         colageneric.printqueue();
     }
 
-     public static void runContactManager(){
+    public static void runContactManager(){
         MenuController menuController = new MenuController();
         menuController.showMenu();
+    }
+
+    public static void runSingValidator(){
+        SingValidator validarSigno=new SingValidator();
+        validarSigno.stackValidir("([])[]");
+        validarSigno.stackValidir("[]({)}");
+    }
+
+    public static void runStackSorter(){
+        StackGeneric<Integer> stack = new StackGeneric<>();
+        stack.push(5);
+        stack.push(1);
+        stack.push(4);
+        stack.push(2);
+        System.out.println("Pila original: " + stack);
+        sortStack(stack);
+        System.out.println("Pila ordenada: " + stack);
     }
 }
